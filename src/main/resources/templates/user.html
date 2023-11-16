@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Кабинет пользователя</title>
+  <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+<main class="container">
+  <h1>Кабинет пользователя</h1>
+  <form method="post" action="/logout">
+    <button type="submit">Выйти</button>
+  </form>
+  <br>
+  <h2>Изменить данные</h2>
+  <form action="/user/update" method="post">
+    <input type="text" name="username" th:value="${username}" placeholder="Введите логин">
+    <input type="password" name="password" placeholder="Введите пароль"><br>
+    <select name="roles">
+      <option value="USER">Пользователь</option>
+      <option value="ADMIN">Администратор</option>
+      <option value="REDACTOR">Редактор</option>
+    </select>
+    <br><br>
+    <button type="submit">Обновить данные</button>
+  </form>
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+</body>
+</html>
